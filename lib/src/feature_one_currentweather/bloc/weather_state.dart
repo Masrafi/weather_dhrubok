@@ -26,15 +26,15 @@ class WeatherIsLoaded extends WeatherState {
 }
 
 class ForecastIsLoaded extends WeatherState {
-  final weather;
+  final forecast;
 
-  ForecastIsLoaded(this.weather);
+  ForecastIsLoaded(this.forecast);
 
-  ForecastModel get getWeather => weather;
+  ForecastModel get getWeather => forecast;
 
   @override
   // TODO: implement props
-  List<Object> get props => [weather];
+  List<Object> get props => [forecast];
 }
 
 class WeatherIsNotLoaded extends WeatherState {}

@@ -14,7 +14,7 @@ class ForecastRepository {
       Map<String, dynamic> map = jsonDecode(response.body);
       //print(map);
       print("This is from weather forecast: ${map['list']}");
-      return ForecastModel.fromJson(map['list'][0]['main']);
+      return ForecastModel.fromJson(map);
     } catch (e) {
       print(e.toString());
       throw e.toString();

@@ -5,8 +5,6 @@ class WeatherModel {
   int? humidity;
   String? name;
 
-  double get gatTemp => temp! - 272.5;
-
   WeatherModel({this.temp, this.weather, this.speed, this.humidity});
 
   WeatherModel.fromJson(Map<String, dynamic> json) {

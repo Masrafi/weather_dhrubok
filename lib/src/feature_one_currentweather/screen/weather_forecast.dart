@@ -50,11 +50,21 @@ class _WeatherForecastState extends State<WeatherForecast> {
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: 5,
                         itemBuilder: (context, index) {
-                          return Center(
-                            child: Text(
-                              "Description: ${userList.temp.toString()}",
-                              style: const TextStyle(color: Colors.white),
-                            ),
+                          return Column(
+                            children: [
+                              Center(
+                                child: Text(
+                                  "Description: ${userList.list![index].dtTxt.toString()}",
+                                  style: const TextStyle(color: Colors.white),
+                                ),
+                              ),
+                              Center(
+                                child: Text(
+                                  "Description: ${userList.list?[index].main?.temp.toString()}",
+                                  style: const TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ],
                           );
                         });
                   }

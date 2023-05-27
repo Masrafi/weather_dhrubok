@@ -1,48 +1,90 @@
 class ForecastModel {
-  double? temp;
-  double? feelsLike;
-  double? tempMin;
-  double? tempMax;
-  int? pressure;
-  int? seaLevel;
-  int? grndLevel;
-  int? humidity;
-  double? tempKf;
+  List<MyList>? list;
 
-  ForecastModel(
-      {this.temp,
-      this.feelsLike,
-      this.tempMin,
-      this.tempMax,
-      this.pressure,
-      this.seaLevel,
-      this.grndLevel,
-      this.humidity,
-      this.tempKf});
+  ForecastModel({this.list});
 
   ForecastModel.fromJson(Map<String, dynamic> json) {
+    if (json['list'] != null) {
+      list = <MyList>[];
+      json['list'].forEach((v) {
+        list!.add(new MyList.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.list != null) {
+      data['list'] = this.list!.map((v) => v.toJson()).toList();
+    }
+
+    return data;
+  }
+}
+
+class MyList {
+  Main? main;
+  List<Weather>? weather;
+  String? dtTxt;
+
+  MyList({this.main, this.weather, this.dtTxt});
+
+  MyList.fromJson(Map<String, dynamic> json) {
+    main = json['main'] != null ? new Main.fromJson(json['main']) : null;
+    if (json['weather'] != null) {
+      weather = <Weather>[];
+      json['weather'].forEach((v) {
+        weather!.add(new Weather.fromJson(v));
+      });
+    }
+
+    dtTxt = json['dt_txt'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.main != null) {
+      data['main'] = this.main!.toJson();
+    }
+    if (this.weather != null) {
+      data['weather'] = this.weather!.map((v) => v.toJson()).toList();
+    }
+
+    data['dt_txt'] = this.dtTxt;
+    return data;
+  }
+}
+
+class Main {
+  double? temp;
+
+  Main({
+    this.temp,
+  });
+
+  Main.fromJson(Map<String, dynamic> json) {
     temp = json['temp'];
-    feelsLike = json['feels_like'];
-    tempMin = json['temp_min'];
-    tempMax = json['temp_max'];
-    pressure = json['pressure'];
-    seaLevel = json['sea_level'];
-    grndLevel = json['grnd_level'];
-    humidity = json['humidity'];
-    tempKf = json['temp_kf'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['temp'] = this.temp;
-    data['feels_like'] = this.feelsLike;
-    data['temp_min'] = this.tempMin;
-    data['temp_max'] = this.tempMax;
-    data['pressure'] = this.pressure;
-    data['sea_level'] = this.seaLevel;
-    data['grnd_level'] = this.grndLevel;
-    data['humidity'] = this.humidity;
-    data['temp_kf'] = this.tempKf;
+    return data;
+  }
+}
+
+class Weather {
+  String? icon;
+
+  Weather({this.icon});
+
+  Weather.fromJson(Map<String, dynamic> json) {
+    icon = json['icon'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['icon'] = this.icon;
     return data;
   }
 }

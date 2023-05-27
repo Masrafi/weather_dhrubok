@@ -11,7 +11,7 @@ class WeatherRepository {
     Response response = await get(Uri.parse(url));
     try {
       Map<String, dynamic> map = jsonDecode(response.body);
-      print(map);
+      //print(map['main']['temp'].runtimeType);
       return WeatherModel.fromJson(map);
     } catch (e) {
       print(e.toString());
