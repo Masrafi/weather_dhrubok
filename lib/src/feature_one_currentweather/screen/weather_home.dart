@@ -90,15 +90,6 @@ class _HomeState extends State<Home> {
               const Spacer(),
               TextButton(
                 onPressed: () {
-                  //BlocProvider.of<WeatherBloc>(context).add(WeatherFetch(lat));
-                  // Navigator.pushNamed(
-                  //   context,
-                  //   '/weatherlocation',
-                  // arguments: {
-                  //   "lat": lat,
-                  //   "long": long,
-                  // },
-                  //);
                   Navigator.push(
                     context,
                     MaterialPageRoute(

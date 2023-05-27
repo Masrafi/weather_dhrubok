@@ -5,7 +5,6 @@ import '../bloc/weather_bloc.dart';
 import '../bloc/weather_event.dart';
 import '../bloc/weather_state.dart';
 import '../data/model.dart';
-import '../repo/repository.dart';
 
 class WeatherLocation extends StatefulWidget {
   var lat, long;

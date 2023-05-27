@@ -4,7 +4,6 @@ import 'package:task_dr/src/feature_one_currentweather/bloc/forecast_bloc.dart';
 import 'package:task_dr/src/feature_one_currentweather/bloc/weather_state.dart';
 import 'package:task_dr/src/feature_one_currentweather/data/forecast_model.dart';
 import '../../../utils/color.dart';
-import '../bloc/weather_bloc.dart';
 import '../bloc/weather_event.dart';
 
 class WeatherForecast extends StatefulWidget {

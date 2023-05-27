@@ -10,8 +10,6 @@ class ForecastBloc extends Bloc<WeatherEvent, WeatherState> {
     on<WeatherFetch>((event, emit) async {
       if (event is WeatherFetch) {
         emit(WeatherIsLoading());
-        print(
-            ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>${event.lat}");
         try {
           final user =
               await forecastRepository.getDataForecast(event.lat, event.long);
