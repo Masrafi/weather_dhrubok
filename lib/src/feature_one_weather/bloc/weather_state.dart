@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:task_dr/src/feature_one_currentweather/data/forecast_model.dart';
-
+import '../data/forecast_model.dart';
 import '../data/model.dart';
 
 class WeatherState extends Equatable {

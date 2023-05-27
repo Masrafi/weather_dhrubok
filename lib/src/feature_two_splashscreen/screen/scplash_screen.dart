@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:task_dr/src/feature_one_currentweather/screen/weather_home.dart';
+import '../../feature_one_weather/screen/weather_home.dart';
 import '../spalsh_bloc/splash_bloc.dart';
 import '../spalsh_bloc/splash_event.dart';
 import '../spalsh_bloc/splash_state.dart';

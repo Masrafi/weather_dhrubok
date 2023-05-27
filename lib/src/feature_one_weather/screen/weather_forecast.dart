@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:task_dr/src/feature_one_currentweather/bloc/forecast_bloc.dart';
-import 'package:task_dr/src/feature_one_currentweather/bloc/weather_state.dart';
-import 'package:task_dr/src/feature_one_currentweather/data/forecast_model.dart';
 import '../../../utils/color.dart';
+import '../bloc/forecast_bloc.dart';
 import '../bloc/weather_event.dart';
+import '../bloc/weather_state.dart';
+import '../data/forecast_model.dart';
 
 class WeatherForecast extends StatefulWidget {
   var lat, long;

@@ -1,8 +1,7 @@
 import 'dart:convert';
-import 'dart:math';
 import 'package:http/http.dart';
-import 'package:task_dr/src/feature_one_currentweather/data/forecast_model.dart';
 import 'package:task_dr/utils/config.dart';
+import '../data/forecast_model.dart';
 
 class ForecastRepository {
   Future<ForecastModel> getDataForecast(String lat, String long) async {

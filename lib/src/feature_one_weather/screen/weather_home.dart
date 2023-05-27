@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:task_dr/src/feature_one_currentweather/repo/forecast_repo.dart';
-import 'package:task_dr/src/feature_one_currentweather/screen/weather_forecast.dart';
 import 'package:task_dr/src/feature_three_internercheck/screen/interner_check.dart';
 import 'package:task_dr/utils/color.dart';
 import '../../feature_three_internercheck/internet_bloc/internet_cubit.dart';
 import '../bloc/forecast_bloc.dart';
 import '../bloc/weather_bloc.dart';
+import '../repo/forecast_repo.dart';
 import '../repo/repository.dart';
 import 'weather_current_location.dart';
+import 'weather_forecast.dart';
 import 'weather_place.dart';
 
 class Home extends StatefulWidget {

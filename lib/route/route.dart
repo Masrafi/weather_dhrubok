@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../src/feature_one_currentweather/bloc/weather_bloc.dart';
-import '../src/feature_one_currentweather/repo/repository.dart';
-import '../src/feature_one_currentweather/screen/weather_current_location.dart';
-import '../src/feature_one_currentweather/screen/weather_place.dart';
+import '../src/feature_one_weather/bloc/weather_bloc.dart';
+import '../src/feature_one_weather/repo/repository.dart';
+import '../src/feature_one_weather/screen/weather_current_location.dart';
+import '../src/feature_one_weather/screen/weather_place.dart';
 
 class Routes {
   static Route? onGenerateRoute(RouteSettings settings) {
