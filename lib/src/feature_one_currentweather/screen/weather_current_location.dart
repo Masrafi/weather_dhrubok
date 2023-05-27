@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:task_dr/utils/color.dart';
 import '../bloc/weather_bloc.dart';
 import '../bloc/weather_event.dart';
 import '../bloc/weather_state.dart';
@@ -16,7 +17,7 @@ class WeatherLocation extends StatefulWidget {
 
 class _WeatherLocationState extends State<WeatherLocation> {
   var placeController = TextEditingController();
-
+  var color = ColorFactory();
   @override
   void initState() {
     // TODO: implement initState
@@ -60,22 +61,36 @@ class _WeatherLocationState extends State<WeatherLocation> {
                   height: 50,
                 ),
                 Text(
-                  "Temperature in Celsius: ${(userList.temp! - 273.15).round().toString()}c",
-                  style: const TextStyle(color: Colors.white, fontSize: 16),
+                  "Temperature: ${(userList.temp! - 273.15).round().toString()}c OR ${(1.8 * (userList.temp! - 273) + 32).round()}f",
+                  style: TextStyle(color: color.whiteW, fontSize: 16),
                 ),
                 const SizedBox(
                   height: 5,
                 ),
                 Text(
                   "Speed: ${userList.speed.toString()}",
-                  style: const TextStyle(color: Colors.white, fontSize: 16),
+                  style: TextStyle(color: color.whiteW, fontSize: 16),
                 ),
                 const SizedBox(
                   height: 5,
                 ),
                 Text(
                   "Humidity: ${userList.humidity.toString()}",
-                  style: const TextStyle(color: Colors.white, fontSize: 16),
+                  style: TextStyle(color: color.whiteW, fontSize: 16),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  "Pressure: ${userList.pressure.toString()}",
+                  style: TextStyle(color: color.whiteW, fontSize: 16),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  "Visibility: ${userList.visibility.toString()}",
+                  style: TextStyle(color: color.whiteW, fontSize: 16),
                 ),
                 Expanded(
                   child: ListView.builder(
@@ -85,7 +100,9 @@ class _WeatherLocationState extends State<WeatherLocation> {
                         return Center(
                           child: Text(
                             "Description: ${userList.weather![index].description.toString()}",
-                            style: const TextStyle(color: Colors.white),
+                            style: TextStyle(
+                              color: color.whiteW,
+                            ),
                           ),
                         );
                       }),
@@ -95,10 +112,10 @@ class _WeatherLocationState extends State<WeatherLocation> {
             );
           }
           if (state is WeatherErrorState) {
-            return const Center(
+            return Center(
               child: Text(
                 "Error",
-                style: TextStyle(color: Colors.black, fontSize: 50),
+                style: TextStyle(color: color.blackB, fontSize: 50),
               ),
             );
           }

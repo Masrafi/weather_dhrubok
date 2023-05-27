@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_dr/src/feature_one_currentweather/bloc/forecast_bloc.dart';
 import 'package:task_dr/src/feature_one_currentweather/bloc/weather_state.dart';
 import 'package:task_dr/src/feature_one_currentweather/data/forecast_model.dart';
+import '../../../utils/color.dart';
 import '../bloc/weather_bloc.dart';
 import '../bloc/weather_event.dart';
 
@@ -15,6 +16,8 @@ class WeatherForecast extends StatefulWidget {
 }
 
 class _WeatherForecastState extends State<WeatherForecast> {
+  var color = ColorFactory();
+
   @override
   Widget build(BuildContext context) {
     BlocProvider.of<ForecastBloc>(context).add(WeatherFetch(
@@ -35,6 +38,17 @@ class _WeatherForecastState extends State<WeatherForecast> {
             const SizedBox(
               height: 100,
             ),
+            Center(
+              child: const Text(
+                "Weather Forecast",
+                style: TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 200,
+            ),
             SizedBox(
               height: 300,
               width: 500,
@@ -47,24 +61,52 @@ class _WeatherForecastState extends State<WeatherForecast> {
                     ForecastModel userList = state.getWeather;
 
                     return ListView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
                         itemCount: 5,
                         itemBuilder: (context, index) {
-                          return Column(
-                            children: [
-                              Center(
-                                child: Text(
-                                  "Description: ${userList.list![index].dtTxt.toString()}",
-                                  style: const TextStyle(color: Colors.white),
-                                ),
+                          return Container(
+                            width: 200,
+                            height: 300,
+                            margin: const EdgeInsets.only(
+                              right: 20,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(.2),
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(15),
                               ),
-                              Center(
-                                child: Text(
-                                  "Description: ${userList.list?[index].main?.temp.toString()}",
-                                  style: const TextStyle(color: Colors.white),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const Spacer(),
+                                Center(
+                                    child: Text(
+                                  "Date: ${userList.list![index].dtTxt!.substring(0, 11).toString()}",
+                                  style: TextStyle(
+                                      fontSize: 18, color: color.blackB),
+                                )),
+                                const Spacer(),
+                                Center(
+                                  child: Text(
+                                    "Tempreture: ${userList.list?[index].main?.temp.toString()}",
+                                    style: TextStyle(color: color.blackB),
+                                  ),
                                 ),
-                              ),
-                            ],
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Center(
+                                  child: Text(
+                                    "Icon: ${userList.list?[index].weather.toString()}",
+                                    style: TextStyle(color: color.blackB),
+                                  ),
+                                ),
+                                const Spacer()
+                              ],
+                            ),
                           );
                         });
                   }
@@ -78,80 +120,6 @@ class _WeatherForecastState extends State<WeatherForecast> {
                   }
                   return Container();
                 },
-              ),
-            ),
-            SizedBox(
-              height: 300,
-              width: 400,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  Container(
-                    width: 200,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(.2),
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(15),
-                      ),
-                    ),
-                    child: const Center(
-                        child: Text(
-                      'Item 1',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    )),
-                  ),
-                  const SizedBox(
-                    width: 30,
-                  ),
-                  Container(
-                    width: 200,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(.2),
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(15),
-                      ),
-                    ),
-                    child: const Center(
-                        child: Text(
-                      'Item 1',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    )),
-                  ),
-                  const SizedBox(
-                    width: 30,
-                  ),
-                  Container(
-                    width: 200,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(.2),
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(15),
-                      ),
-                    ),
-                    child: const Center(
-                        child: Text(
-                      'Item 1',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    )),
-                  ),
-                  const SizedBox(
-                    width: 30,
-                  ),
-                  Container(
-                    width: 200,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(.2),
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(15),
-                      ),
-                    ),
-                    child: const Center(
-                        child: Text(
-                      'Item 1',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    )),
-                  ),
-                ],
               ),
             ),
           ],

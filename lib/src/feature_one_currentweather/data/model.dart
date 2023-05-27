@@ -3,9 +3,19 @@ class WeatherModel {
   List<Weather>? weather;
   double? speed;
   int? humidity;
+  int? pressure;
+  int? visibility;
   String? name;
 
-  WeatherModel({this.temp, this.weather, this.speed, this.humidity});
+  WeatherModel({
+    this.temp,
+    this.weather,
+    this.speed,
+    this.humidity,
+    this.pressure,
+    this.visibility,
+    this.name,
+  });
 
   WeatherModel.fromJson(Map<String, dynamic> json) {
     temp = json['main']['temp'];
@@ -14,6 +24,8 @@ class WeatherModel {
         .toList();
     speed = json['wind']['speed'];
     humidity = json['main']['humidity'];
+    pressure = json['main']['pressure'];
+    visibility = json['visibility'];
     name = json['name'];
   }
 
@@ -23,6 +35,8 @@ class WeatherModel {
     data['description'] = this.weather;
     data['speed'] = this.speed;
     data['humidity'] = this.humidity;
+    data['pressure'] = this.pressure;
+    data['visibility'] = this.visibility;
     data['name'] = this.name;
     return data;
   }

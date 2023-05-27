@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:task_dr/utils/color.dart';
 import '../bloc/weather_bloc.dart';
 import '../bloc/weather_event.dart';
 import '../bloc/weather_state.dart';
@@ -17,6 +18,7 @@ class WeatherPlace extends StatefulWidget {
 class _WeatherPlaceState extends State<WeatherPlace> {
   var placeController = TextEditingController();
   late String lat, long;
+  var color = ColorFactory();
 
   @override
   void initState() {
@@ -24,6 +26,7 @@ class _WeatherPlaceState extends State<WeatherPlace> {
     super.initState();
   }
 
+  //This method convert location to lat & long
   Future<void> getLatLngFromPlaceName(String placeName) async {
     try {
       List<Location> locations = await locationFromAddress(placeName);
@@ -87,28 +90,42 @@ class _WeatherPlaceState extends State<WeatherPlace> {
                 const Spacer(),
                 Text(
                   "Place Name: ${userList.name.toString()}",
-                  style: const TextStyle(color: Colors.white, fontSize: 16),
+                  style: TextStyle(color: color.whiteW, fontSize: 16),
                 ),
                 const SizedBox(
                   height: 50,
                 ),
                 Text(
-                  "Temperature in Celsius: ${(userList.temp! - 273.15).round().toString()}c",
-                  style: const TextStyle(color: Colors.white, fontSize: 16),
+                  "Temperature: ${(userList.temp! - 273.15).round().toString()}c OR ${(1.8 * (userList.temp! - 273) + 32).round()}f",
+                  style: TextStyle(color: color.whiteW, fontSize: 16),
                 ),
                 const SizedBox(
                   height: 5,
                 ),
                 Text(
                   "Speed: ${userList.speed.toString()}",
-                  style: const TextStyle(color: Colors.white, fontSize: 16),
+                  style: TextStyle(color: color.whiteW, fontSize: 16),
                 ),
                 const SizedBox(
                   height: 5,
                 ),
                 Text(
                   "Humidity: ${userList.humidity.toString()}",
-                  style: const TextStyle(color: Colors.white, fontSize: 16),
+                  style: TextStyle(color: color.whiteW, fontSize: 16),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  "Pressure: ${userList.pressure.toString()}",
+                  style: TextStyle(color: color.whiteW, fontSize: 16),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  "Visibility: ${userList.visibility.toString()}",
+                  style: TextStyle(color: color.whiteW, fontSize: 16),
                 ),
                 Expanded(
                   child: ListView.builder(
@@ -118,7 +135,7 @@ class _WeatherPlaceState extends State<WeatherPlace> {
                       return Center(
                         child: Text(
                           "Description: ${userList.weather![index].description.toString()}",
-                          style: const TextStyle(color: Colors.white),
+                          style: TextStyle(color: color.whiteW),
                         ),
                       );
                     },

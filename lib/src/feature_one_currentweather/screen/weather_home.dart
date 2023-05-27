@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_dr/src/feature_one_currentweather/repo/forecast_repo.dart';
 import 'package:task_dr/src/feature_one_currentweather/screen/weather_forecast.dart';
 import 'package:task_dr/src/feature_three_internercheck/screen/interner_check.dart';
+import 'package:task_dr/utils/color.dart';
 import '../../feature_three_internercheck/internet_bloc/internet_cubit.dart';
 import '../bloc/forecast_bloc.dart';
 import '../bloc/weather_bloc.dart';
@@ -20,7 +21,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   late String lat, long;
-
+  var color = ColorFactory();
   @override
   void initState() {
     // TODO: implement initState
@@ -28,6 +29,7 @@ class _HomeState extends State<Home> {
     getLocation();
   }
 
+// This method get current locations lat & long
   void getLocation() async {
     bool serviceEnabled;
     LocationPermission permission;
