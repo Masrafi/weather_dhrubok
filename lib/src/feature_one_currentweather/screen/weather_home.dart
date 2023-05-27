@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:task_dr/src/feature_one_currentweather/repo/forecast_repo.dart';
+import 'package:task_dr/src/feature_one_currentweather/screen/weather_forecast.dart';
 import 'package:task_dr/src/feature_three_internercheck/screen/interner_check.dart';
 import '../../feature_three_internercheck/internet_bloc/internet_cubit.dart';
+import '../bloc/forecast_bloc.dart';
 import '../bloc/weather_bloc.dart';
 import '../repo/repository.dart';
 import 'weather_current_location.dart';
@@ -81,7 +84,7 @@ class _HomeState extends State<Home> {
           ),
           child: Column(
             children: [
-              InternetCheck(),
+              const InternetCheck(),
               const Spacer(),
               TextButton(
                 onPressed: () {
@@ -129,7 +132,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               TextButton(
@@ -139,7 +142,7 @@ class _HomeState extends State<Home> {
                     MaterialPageRoute(
                       builder: (context) => BlocProvider(
                           create: (context) => WeatherBloc(WeatherRepository()),
-                          child: WeatherPlace()),
+                          child: const WeatherPlace()),
                     ),
                   );
                 },
@@ -159,6 +162,46 @@ class _HomeState extends State<Home> {
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [Text("Place"), Icon(Icons.arrow_forward)],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BlocProvider(
+                        create: (context) => ForecastBloc(ForecastRepository()),
+                        child: WeatherForecast(
+                          lat: lat,
+                          long: long,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+                child: Container(
+                  height: 50,
+                  width: 300,
+                  padding: const EdgeInsets.only(
+                    left: 20,
+                    right: 20,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.2),
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(50),
+                    ),
+                  ),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Weather Forecast"),
+                      Icon(Icons.arrow_forward)
+                    ],
                   ),
                 ),
               ),
